@@ -19,6 +19,6 @@ namespace E_Commerce.Application.Repositories
         bool UpdateRange(List<T> models);
 
         //SaveChanges method
-        Task<int> SaveChanges();
+        Task<int> SaveChangesAsync();
     }
 }

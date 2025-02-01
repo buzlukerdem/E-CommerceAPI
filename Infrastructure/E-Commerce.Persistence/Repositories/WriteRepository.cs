@@ -64,7 +64,7 @@ namespace E_Commerce.Persistence.Repositories
             Table.UpdateRange(models);
             return true;
         }
-        public async Task<int> SaveChanges()
+        public async Task<int> SaveChangesAsync()
         {
             return await _context.SaveChangesAsync();
 
