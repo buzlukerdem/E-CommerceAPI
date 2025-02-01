@@ -17,13 +17,15 @@ namespace E_Commerce.API.Controllers
             _productReadRepository = productReadRepository;
             _productWriteRepository = productWriteRepository;
         }
+        #region DummyTest
+        //[HttpGet]
+        //public async Task Get()
+        //{
+        //    await _productWriteRepository.AddAsync(new() { Id = Guid.NewGuid(), Name = "DummyProduct", Price = 100, Stock = 250, CreatedTime = DateTime.UtcNow });
+        //    var count = await _productWriteRepository.SaveChangesAsync();
 
-        [HttpGet]
-        public async Task Get()
-        {
-            await _productWriteRepository.AddAsync(new() { Id = Guid.NewGuid(), Name = "DummyProduct", Price = 100, Stock = 250, CreatedTime = DateTime.UtcNow });
-            var count = await _productWriteRepository.SaveChangesAsync();
+        //}
+        #endregion
 
-        }
     }
 }
