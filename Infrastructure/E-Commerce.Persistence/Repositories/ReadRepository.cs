@@ -23,22 +23,34 @@ namespace E_Commerce.Persistence.Repositories
 
         //Set method: generic type entity
         public DbSet<T> Table => _context.Set<T>();
-        public IQueryable<T> GetAll()
+        public IQueryable<T> GetAll(bool isTrackig = true)
         {
-            return Table;
+            var query = Table.AsQueryable();
+            if (!isTrackig)
+                query = query.AsNoTracking();
+            return query;
         }
-        public IQueryable<T> GetWhere(Expression<Func<T, bool>> method)
+        public IQueryable<T> GetWhere(Expression<Func<T, bool>> method, bool isTrackig = true)
         {
-            return Table.Where(method);
+            var query = Table.Where(method);
+            if (!isTrackig)
+                query = query.AsNoTracking();
+            return query;
         }
-        public async Task<T> GetSingleAsync(Expression<Func<T, bool>> method)
+        public async Task<T> GetSingleAsync(Expression<Func<T, bool>> method, bool isTrackig = true)
         {
-            return await Table.SingleOrDefaultAsync(method);
+            var query = Table.AsQueryable();
+            if(!isTrackig)
+                query = query.AsNoTracking();
+            return await query.FirstOrDefaultAsync(method);
         }
 
-        public async Task<T> GetByIdAsync(string id)
+        public async Task<T> GetByIdAsync(string id, bool isTrackig = true)
         {
-            return await Table.FindAsync(Guid.Parse(id));
+            var query = Table.AsQueryable();
+            if(!isTrackig)
+                query = query.AsNoTracking();
+            return await query.SingleOrDefaultAsync(data => data.Id == Guid.Parse(id));
         }
     }
 }
