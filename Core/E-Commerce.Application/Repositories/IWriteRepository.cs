@@ -13,9 +13,10 @@ namespace E_Commerce.Application.Repositories
         Task<bool> AddAsync(T model);
         Task<bool> AddRangeAsync(List<T> models);
         bool Remove(T model);
+        // maybe cant work
         Task<bool> Remove(string id);
         bool RemoveRange(List<T> models);
-        bool UpdateAsync(T model);
+        bool Update(T model);
         bool UpdateRange(List<T> models);
 
         //SaveChanges method

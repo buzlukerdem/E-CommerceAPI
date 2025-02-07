@@ -53,7 +53,7 @@ namespace E_Commerce.Persistence.Repositories
             return Remove(model);
         }
 
-        public bool UpdateAsync(T model)
+        public bool Update(T model)
         {
             EntityEntry<T> entity = Table.Update(model);
             return entity.State == EntityState.Modified;

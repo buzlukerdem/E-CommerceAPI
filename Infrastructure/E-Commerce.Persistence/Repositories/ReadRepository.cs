@@ -40,15 +40,17 @@ namespace E_Commerce.Persistence.Repositories
         public async Task<T> GetSingleAsync(Expression<Func<T, bool>> method, bool isTrackig = true)
         {
             var query = Table.AsQueryable();
-            if(!isTrackig)
+            if (!isTrackig)
                 query = query.AsNoTracking();
-            return await query.FirstOrDefaultAsync(method);
+            return await query.SingleOrDefaultAsync(method);
         }
 
         public async Task<T> GetByIdAsync(string id, bool isTrackig = true)
         {
+            //findasync
+            //await Table.FindAsync(Guid.Parse(id));
             var query = Table.AsQueryable();
-            if(!isTrackig)
+            if (!isTrackig)
                 query = query.AsNoTracking();
             return await query.SingleOrDefaultAsync(data => data.Id == Guid.Parse(id));
         }

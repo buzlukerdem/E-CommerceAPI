@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <Folder Include="Abstractions\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>
