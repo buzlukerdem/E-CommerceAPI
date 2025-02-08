@@ -14,7 +14,7 @@ namespace E_Commerce.Application.Repositories
         Task<bool> AddRangeAsync(List<T> models);
         bool Remove(T model);
         // maybe cant work
-        Task<bool> Remove(string id);
+        Task<bool> RemoveAsync(string id);
         bool RemoveRange(List<T> models);
         bool Update(T model);
         bool UpdateRange(List<T> models);
