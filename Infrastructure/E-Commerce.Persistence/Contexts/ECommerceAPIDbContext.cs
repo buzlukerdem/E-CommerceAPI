@@ -27,10 +27,22 @@ namespace E_Commerce.Persistence.Contexts
             var datas = ChangeTracker.Entries<BaseEntity>();
             foreach (var data in datas)
             {
-                if (data.State == EntityState.Added)
-                    data.Entity.CreatedTime = DateTime.UtcNow;
-                else if (data.State == EntityState.Modified)
-                    data.Entity.UpdatedTime = DateTime.UtcNow;
+                //if (data.State == EntityState.Added)
+                //    data.Entity.CreatedTime = DateTime.UtcNow;
+                //else if (data.State == EntityState.Modified)
+                //    data.Entity.UpdatedTime = DateTime.UtcNow;
+
+
+
+                // switch
+
+
+               _ = data.State switch
+               {
+                   EntityState.Added => data.Entity.CreatedTime = DateTime.UtcNow,
+                   EntityState.Modified => data.Entity.UpdatedTime = DateTime.UtcNow,
+                   _ => DateTime.UtcNow
+               };
             }
             return await base.SaveChangesAsync(cancellationToken);
         }

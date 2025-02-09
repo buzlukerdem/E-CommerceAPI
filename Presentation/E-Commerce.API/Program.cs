@@ -1,4 +1,9 @@
+using E_Commerce.Application.Validators.Products;
+using E_Commerce.Application.ViewModels.Products;
+using E_Commerce.Infrastructure.Filters;
 using E_Commerce.Persistence;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,9 +11,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddPermistenceServices();
 builder.Services.AddCors(options => options.AddDefaultPolicy
-(policy => policy.WithOrigins("http://localhost:4200/", "https://localhost:4200/").AllowAnyMethod().AllowAnyHeader()));
+(policy => policy.WithOrigins("http://localhost:4200", "https://localhost:4200").AllowAnyHeader().AllowAnyMethod()));
 
-builder.Services.AddControllers();
+
+builder.Services.AddControllers()
+    .AddFluentValidation(c => c.RegisterValidatorsFromAssemblyContaining<CreateProductValidator>());
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
