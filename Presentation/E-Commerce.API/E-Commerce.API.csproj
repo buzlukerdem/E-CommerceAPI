@@ -28,4 +28,8 @@
     <ProjectReference Include="..\..\Infrastructure\E-Commerce.Persistence\E-Commerce.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
 </Project>
