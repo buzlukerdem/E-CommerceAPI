@@ -74,7 +74,7 @@ namespace E_Commerce.Infrastructure.Services
                 string newFileName = await FileRenameAsync(uploadPath, file.FileName);
                 //await CopyFileAsync(Path.Combine(uploadPath, newFileName), file);
                 bool fileResult = await CopyFileAsync($"{uploadPath}\\{newFileName}", file);
-                datas.Add((newFileName, $"{uploadPath}\\{newFileName}"));
+                datas.Add((newFileName, $"{path}\\{newFileName}"));
                 results.Add(fileResult);
             }
 

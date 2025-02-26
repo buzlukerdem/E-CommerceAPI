@@ -11,6 +11,9 @@ using E_Commerce.Application.Repositories.ICustomer;
 using E_Commerce.Persistence.Repositories;
 using E_Commerce.Application.Repositories.IOrder;
 using E_Commerce.Application.Repositories.IProduct;
+using E_Commerce.Application.Repositories.IFile;
+using E_Commerce.Application.Repositories.IProductImageFile;
+using E_Commerce.Application.Repositories.IInvoiceFile;
 
 namespace E_Commerce.Persistence
 {
@@ -26,6 +29,12 @@ namespace E_Commerce.Persistence
             services.AddScoped<IOrderWriteRepository, OrderWriteRepository>();
             services.AddScoped<IProductReadRepository, ProductReadRepository>();
             services.AddScoped<IProductWriteRepository, ProductWriteRepository>();
+            services.AddScoped<IFileReadRepository, FileReadRepository>();
+            services.AddScoped<IFileWriteRepository, FileWriteRepository>();
+            services.AddScoped<IProductImageFileReadRepository, ProductImageFileReadRepository>();
+            services.AddScoped<IProductImageFileWriteRepository, ProductImageFileWriteRepository>();
+            services.AddScoped<IInvoiceFileReadRepository, InvoiceFileReadRepository>();
+            services.AddScoped<IInvoiceFileWriteRepository, InvoiceFileWriteRepository>();
         }
     }
 }

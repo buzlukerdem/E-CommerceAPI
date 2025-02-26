@@ -10,6 +10,6 @@ namespace E_Commerce.Domain.Entities.Common
     {
         public Guid Id { get; set; }
         public DateTime CreatedTime { get; set; }
-        public DateTime UpdatedTime { get; set; }
+        virtual public DateTime UpdatedTime { get; set; }
     }
 }
