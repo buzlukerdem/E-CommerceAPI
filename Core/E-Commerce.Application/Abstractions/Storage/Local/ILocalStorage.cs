@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace E_Commerce.Domain.Entities
+namespace E_Commerce.Application.Abstractions.Storage.Local
 {
-    public class InvoiceFile : File
+    public interface ILocalStorage : IStorage
     {
-        public decimal Price { get; set; }
+
     }
 }

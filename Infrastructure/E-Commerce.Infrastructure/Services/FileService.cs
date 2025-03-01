@@ -1,11 +1,10 @@
-﻿using E_Commerce.Application.Services;
-using E_Commerce.Infrastructure.Operations;
+﻿using E_Commerce.Infrastructure.Operations;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 
 namespace E_Commerce.Infrastructure.Services
 {
-    public class FileService : IFileService
+    public class FileService 
     {
         readonly IWebHostEnvironment _webHostEnvironment;
         public FileService(IWebHostEnvironment webHostEnvironment)
@@ -81,7 +80,7 @@ namespace E_Commerce.Infrastructure.Services
             if (results.TrueForAll(r => r.Equals(true)))
                 return datas;
 
-            return null;
+            return datas;
         }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using E_Commerce.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace E_Commerce.Persistence.Migrations
 {
     [DbContext(typeof(ECommerceAPIDbContext))]
-    partial class ECommerceAPIDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250301134130_mig1")]
+    partial class mig1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,10 +65,6 @@ namespace E_Commerce.Persistence.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Path")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Storage")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -154,7 +153,7 @@ namespace E_Commerce.Persistence.Migrations
                 {
                     b.HasBaseType("E_Commerce.Domain.Entities.File");
 
-                    b.Property<decimal>("Price")
+                    b.Property<decimal>("OrderPrice")
                         .HasColumnType("numeric");
 
                     b.HasDiscriminator().HasValue("InvoiceFile");

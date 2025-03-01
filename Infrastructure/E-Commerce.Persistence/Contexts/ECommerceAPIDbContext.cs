@@ -56,22 +56,22 @@ namespace E_Commerce.Persistence.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Product>()
-                .HasData(
-                    new Product() { Id = Guid.NewGuid(), Name = "A Product", Price = 100, Stock = 10, CreatedTime = DateTime.UtcNow },
-                    new Product() { Id = Guid.NewGuid(), Name = "B Product", Price = 200, Stock = 20, CreatedTime = DateTime.UtcNow },
-                    new Product() { Id = Guid.NewGuid(), Name = "C Product", Price = 300, Stock = 30, CreatedTime = DateTime.UtcNow },
-                    new Product() { Id = Guid.NewGuid(), Name = "D Product", Price = 400, Stock = 40, CreatedTime = DateTime.UtcNow },
-                    new Product() { Id = Guid.NewGuid(), Name = "E Product", Price = 500, Stock = 50, CreatedTime = DateTime.UtcNow }
-                );
-            modelBuilder.Entity<Customer>()
-              .HasData(
-                  new Customer() { Id = Guid.NewGuid(), Name = "Erdem Buzluk", CreatedTime = DateTime.UtcNow },
-                  new Customer() { Id = Guid.NewGuid(), Name = "Nesrin Alya", CreatedTime = DateTime.UtcNow },
-                  new Customer() { Id = Guid.NewGuid(), Name = "Kadir Demir", CreatedTime = DateTime.UtcNow },
-                  new Customer() { Id = Guid.NewGuid(), Name = "Berkay Oral", CreatedTime = DateTime.UtcNow },
-                  new Customer() { Id = Guid.NewGuid(), Name = "Deniz Çoban", CreatedTime = DateTime.UtcNow }
-              );
+            //modelBuilder.Entity<Product>()
+            //    .HasData(
+            //        new Product() { Id = Guid.NewGuid(), Name = "A Product", Price = 100, Stock = 10, CreatedTime = DateTime.UtcNow },
+            //        new Product() { Id = Guid.NewGuid(), Name = "B Product", Price = 200, Stock = 20, CreatedTime = DateTime.UtcNow },
+            //        new Product() { Id = Guid.NewGuid(), Name = "C Product", Price = 300, Stock = 30, CreatedTime = DateTime.UtcNow },
+            //        new Product() { Id = Guid.NewGuid(), Name = "D Product", Price = 400, Stock = 40, CreatedTime = DateTime.UtcNow },
+            //        new Product() { Id = Guid.NewGuid(), Name = "E Product", Price = 500, Stock = 50, CreatedTime = DateTime.UtcNow }
+            //    );
+            //modelBuilder.Entity<Customer>()
+            //  .HasData(
+            //      new Customer() { Id = Guid.NewGuid(), Name = "Erdem Buzluk", CreatedTime = DateTime.UtcNow },
+            //      new Customer() { Id = Guid.NewGuid(), Name = "Nesrin Alya", CreatedTime = DateTime.UtcNow },
+            //      new Customer() { Id = Guid.NewGuid(), Name = "Kadir Demir", CreatedTime = DateTime.UtcNow },
+            //      new Customer() { Id = Guid.NewGuid(), Name = "Berkay Oral", CreatedTime = DateTime.UtcNow },
+            //      new Customer() { Id = Guid.NewGuid(), Name = "Deniz Çoban", CreatedTime = DateTime.UtcNow }
+            //  );
 
         }
         #endregion
