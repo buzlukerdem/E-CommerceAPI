@@ -12,6 +12,9 @@ namespace E_Commerce.Domain.Entities
         public string Name { get; set; }
         public long Price { get; set; }
         public int Stock { get; set; }
+        // NAV PROP N-N
         public ICollection<Order> Orders { get; set; }
+        // NAV PROP N-N
+        public ICollection<ProductImageFile> ProductImageFiles { get; set; }
     }
 }
