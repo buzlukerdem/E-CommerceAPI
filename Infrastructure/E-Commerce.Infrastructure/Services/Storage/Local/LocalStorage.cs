@@ -15,6 +15,7 @@ namespace E_Commerce.Infrastructure.Services.Storage.Local
 
         public async Task DeleteAsync(string path, string fileName)
         {
+            //string uploadPath = Path.Combine(_webHostEnvironment.WebRootPath, path);
             File.Delete($"{path}\\{fileName}");
         }
 
