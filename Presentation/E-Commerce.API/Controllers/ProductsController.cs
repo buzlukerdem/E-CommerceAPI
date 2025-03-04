@@ -5,6 +5,7 @@ using E_Commerce.Application.Repositories.IProductImageFile;
 using E_Commerce.Application.RequestParameters;
 using E_Commerce.Application.ViewModels.Products;
 using E_Commerce.Domain.Entities;
+using E_Commerce.Infrastructure.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -127,15 +128,34 @@ namespace E_Commerce.API.Controllers
         }
 
 
+        // file service
+
+        //[HttpPost("[action]")]
+        //public async Task<IActionResult> Upload()
+        //{
+        //    FileService fileService = new(_webHostEnvironment);
+        //    var datas = await fileService.UploadAsync("resource/product-images", Request.Form.Files);
+        //    await _productImageFileWriteRepository.AddRangeAsync(datas.Select(d => new ProductImageFile()
+        //    {
+        //        FileName = d.fileName,
+        //        Path = d.path,
+        //    }).ToList());
+
+        //    await _productImageFileWriteRepository.SaveChangesAsync();
+
+        //    return Ok();
+        //}
+
         // Upload action
+        // LOCAL STORAGE
         [HttpPost("[action]")]
-        public async Task<IActionResult> Upload()
+        public async Task<IActionResult> Upload(string id)
         {
-            var datas = await _storageService.UploadAsync("resource/images", Request.Form.Files);
-            await _productImageFileWriteRepository.AddRangeAsync(datas.Select(d => new ProductImageFile()
+            List<(string fileName, string pathOrContainerName)> results = await _storageService.UploadAsync("resource/product-images", Request.Form.Files);
+            await _productImageFileWriteRepository.AddRangeAsync(results.Select(r => new ProductImageFile()
             {
-                FileName = d.fileName,
-                Path = d.pathOrContainerName,
+                FileName = r.fileName,
+                Path = r.pathOrContainerName,
                 Storage = _storageService.StorageName
             }).ToList());
 
@@ -144,5 +164,22 @@ namespace E_Commerce.API.Controllers
             return Ok();
         }
 
+
+        // FOR AZURE
+        [HttpPost("[action]")]
+        public async Task<IActionResult> UploadAzure(string id)
+        {
+            List<(string fileName, string pathOrContainerName)> results = await _storageService.UploadAsync("files", Request.Form.Files);
+            await _productImageFileWriteRepository.AddRangeAsync(results.Select(r => new ProductImageFile()
+            {
+                FileName = r.fileName,
+                Path = r.pathOrContainerName,
+                Storage = _storageService.StorageName
+            }).ToList());
+
+            await _productImageFileWriteRepository.SaveChangesAsync();
+
+            return Ok();
+        }
     }
 }
